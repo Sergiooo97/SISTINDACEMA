@@ -150,34 +150,15 @@ class personalController extends Controller
             $sucursal_bancaria = institucionesBancarias::all();
             $status = status::all();
         return view('infoPersonal.show', compact('infPersonal','sucursal_bancaria','status'));
-
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function documentoUp(Request $request)
     {
-
      $documento = documento::create([
         //Ojo aqui es en donde asignas la ruta del file a donde ira el documento en este caso es en la carpeta public/ pero puedes definir la carpeta que quieras
          'identificacion_oficial' => $request -> file('file') -> store('public/doc'),
          'empleado_id' => $request->input('empleado_id')
-       ]);
-          
-          
+       ]);         
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $personal = personal::find($id);
