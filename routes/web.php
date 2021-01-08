@@ -27,6 +27,7 @@ Route::get('/personal/c', [App\Http\Controllers\personalController::class, 'crea
 Route::post('/personal/s', [App\Http\Controllers\personalController::class, 'store'])->name('personal.store');
 Route::get('/personal/{id}/detalles', [App\Http\Controllers\personalController::class, 'show'])->name('personal.show');
 Route::patch('/personal/update/{id}', [App\Http\Controllers\personalController::class, 'update'])->name('personal.update');
+Route::post('/personal/documento/up', [App\Http\Controllers\personalController::class, 'documentoUp'])->name('personal.docUp');
 
 Route::get('/historial-laboral/i', [App\Http\Controllers\historialLaboralController::class, 'index'])->name('historial-laboral.index');
 Route::get('/historial-laboral/c/{id}', [App\Http\Controllers\historialLaboralController::class, 'create'])->name('historial-laboral.create');

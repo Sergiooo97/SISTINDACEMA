@@ -102,7 +102,7 @@
                               {{ $prestamo->clave_interbancaria}}                              
                            </td>
                            <td>
-                           <a class="btn btn-info" href="{{ route('vacaciones.create') }}">Vacaciones</a>                              
+                           <a class="btn btn-info" href="{{ route('vacaciones.create', ['id' => $prestamo->empleado_id]) }}">Vacaciones</a>                              
                          </td> 
                             </tr> 
                             @endforeach

@@ -10,6 +10,8 @@ use App\Models\historialLaboral;
 use App\Models\prestamos;
 
 use Alert;
+use App\Models\documento;
+use Illuminate\Support\Facades\Storage;
 
 class personalController extends Controller
 {
@@ -129,13 +131,14 @@ class personalController extends Controller
             'control_vacaciones.dias_disfrutados as dias_disfrutados',
             'control_vacaciones.dias_por_disfrutar as dias_por_disfrutar',
             'control_vacaciones.fecha_inicial as fecha_inicial',
-            'control_vacaciones.fecha_final as fecha_final'
-
+            'control_vacaciones.fecha_final as fecha_final',
+            'documentos.identificacion_oficial as identificacion',
 
 
             )
             ->leftJoin('historial_laborals', 'personals.id', '=', 'historial_laborals.empleado_id')
             ->leftJoin('prestamos', 'personals.id', '=', 'prestamos.empleado_id')
+            ->leftJoin('documentos', 'personals.id', '=', 'documentos.empleado_id')
             ->leftJoin('control_vacaciones', 'personals.id', '=', 'control_vacaciones.empleado_id')
             ->leftJoin('catalogo_puestos', 'historial_laborals.puesto_id', '=', 'catalogo_puestos.id')
             ->leftJoin('statuses', 'historial_laborals.status_id', '=', 'statuses.id')
@@ -156,9 +159,16 @@ class personalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function documentoUp(Request $request)
     {
-        //
+
+     $documento = documento::create([
+        //Ojo aqui es en donde asignas la ruta del file a donde ira el documento en este caso es en la carpeta public/ pero puedes definir la carpeta que quieras
+         'identificacion_oficial' => $request -> file('file') -> store('public/doc'),
+         'empleado_id' => $request->input('empleado_id')
+       ]);
+          
+          
     }
 
     /**

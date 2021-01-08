@@ -18,7 +18,7 @@ class vacacionesController extends Controller
             'control_vacaciones.num_periodo as num_periodo',
             'control_vacaciones.periodo_perteneciente as periodo_perteneciente',
             'control_vacaciones.dias_vacaciones as dias_vacaciones',
-            'control_vacaciones.fecha_inical as fecha_inicial',
+            'control_vacaciones.fecha_inicial as fecha_inicial',
             'control_vacaciones.fecha_final as fecha_final',
             'personals.id as empleado_id',
             'personals.nombres as nombres'
